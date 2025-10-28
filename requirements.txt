@@ -1,0 +1,9 @@
+win32gui
+opencv-python
+numpy
+mss
+pyautogui
+pillow
+pyyaml
+pytesseract
+pywin32          # <— 新增，用来聚焦/恢复窗口

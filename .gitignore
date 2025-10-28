@@ -1,0 +1,27 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.python-version
+
+# venv
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+
+# logs & debug
+logs/
+debug/
+*.log
+*.tmp
+
+# images (只忽略调试目录；如果你要保留样例图，就放 samples/ 里别忽略)
+# *.png
+# *.jpg

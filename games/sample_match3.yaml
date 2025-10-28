@@ -1,0 +1,49 @@
+game_name: "Bejeweled3"
+window:
+  title_substring: "Bejeweled"
+  force_focus_on_start: true
+  keep_topmost: false
+
+board:
+  anchor: "client"                 # 以窗口客户区为锚
+  autolocate: false                # 已经从日志拿到稳定ROI后，锁死
+  rows: 8
+  cols: 8
+  roi_rel_to_client: [ 260, 36, 512, 512 ]   # 你日志里稳定那组
+  cell_w: 64
+  cell_h: 64
+  pad_x: 0
+  pad_y: 0
+
+tiles:
+  method: "perframe"   # ← 逐帧聚类识别，稳
+
+level_end:
+  method: "template"               # 先不用 OCR
+  success_templates: [ "games/ui/level_complete.png" ]
+  fail_templates: [ ]
+  thr: 0.90
+
+timing:
+  drag_ms: 260
+  post_move_wait_ms: 1100
+  settle_check_ms: 250
+  settle_patience: 4
+  exec_min_delta: 3.5          # 稳定后全局签名差阈值
+  settle_thresh: 6.0           # 保持不变；如仍误判可降到 5.0 让等待更严格
+
+
+capture:
+  every_moves: 0
+  end_region: "client"     # 可选: full | client | roi | roi_expand
+  end_pad: 24              # roi_expand 时的外扩像素
+
+ai:
+  depth: 2        # 2 或 3（3 更强但更慢）
+  rollouts: 6     # 每手采样次数（8~12 更稳）
+  beam: 6         # 每层保留分支（6~8）
+  gamma: 0.85     # 子层折扣
+
+
+
+
